@@ -1,0 +1,44 @@
+{
+  "schema_version": "vllm-hust-mod-metadata-v1",
+  "mod_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
+  "repository": "stateaxis-shared-prefix-attention",
+  "display_name": "stateaxis-shared-prefix-attention",
+  "canonical_repository": "https://github.com/intellistream/stateaxis-shared-prefix-attention",
+  "responsibility": {
+    "organization": "intellistream",
+    "maintainers": [
+      {
+        "name": "Shuhao Zhang (Tony)",
+        "github": "ShuhaoZhangTony"
+      }
+    ],
+    "advisor_status": "not_declared",
+    "advisors": []
+  },
+  "lifecycle": {
+    "status": "experimental",
+    "default_enabled": false,
+    "activation_contract": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed.",
+    "rollback_contract": "Disable or forget the descriptor and run the unchanged StateAxis host without this MOD."
+  },
+  "scope": {
+    "mechanism": "fork_cohort_shared_prefix_attention",
+    "supported_workloads": [],
+    "out_of_scope": [
+      "general performance claims",
+      "automatic inheritance from StateAxis aggregate evidence"
+    ]
+  },
+  "evidence": {
+    "qualification": "not-beneficial-in-tested-cell",
+    "latest_result": "evidence/ISSUE13_SHARED_PREFIX_ATTENTION_CLOSURE.md",
+    "index": "EVIDENCE.md",
+    "performance_claims": [
+      {
+        "label": "not-beneficial-in-tested-cell",
+        "scope": "frozen StateAxis source evidence only",
+        "result": "No tested candidate passed correctness and crossover together."
+      }
+    ]
+  }
+}
