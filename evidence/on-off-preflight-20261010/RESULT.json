@@ -1,0 +1,67 @@
+{
+  "benchmark_commit": "e0be296bfbb536b5c8341bfbb8a9908fda60228d",
+  "benchmark_repository": "vLLM-HUST/vllm-hust-benchmark",
+  "generated_at": "2026-10-10T02:29:59+00:00",
+  "protocol": {
+    "activation_telemetry_required": true,
+    "correctness_required": true,
+    "failure_recovery_required": true,
+    "fresh_service_repetitions_per_arm": 3,
+    "pair_order": [
+      "OFF/ON",
+      "ON/OFF",
+      "OFF/ON"
+    ],
+    "phase": "activation_admission",
+    "required_metrics": [
+      "request_throughput",
+      "output_token_throughput",
+      "ttft_p50_p95_p99",
+      "tpot_p50_p95_p99",
+      "e2e_p50_p95_p99",
+      "peak_hbm",
+      "error_rate"
+    ],
+    "resource_release_required": true,
+    "rule": "No OFF-only or inert-import run may be reported as an ON/OFF performance result.",
+    "same_spec_required": true
+  },
+  "result": {
+    "blockers": [
+      {
+        "code": "IMPLEMENTATION_NOT_ACTIVE",
+        "detail": "implementation statuses are ['import_only']"
+      },
+      {
+        "code": "NO_ACTIVATION_ENTRY_POINT",
+        "detail": "Manifest activation.entry_points is empty"
+      },
+      {
+        "code": "IMPLEMENTATION_NOT_EXTRACTED",
+        "detail": "PROVENANCE.json implementation_extracted is not true"
+      },
+      {
+        "code": "ACTIVATION_CONTRACT_REFUSES_ON",
+        "detail": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed."
+      }
+    ],
+    "local_head": "e974a915b043bbe48a377ce69ca2b609eac59b08",
+    "manifest": {
+      "implementation_statuses": [
+        "import_only"
+      ],
+      "path": "src/stateaxis_shared_prefix_attention/vllm-hust-extension-v0.3.json",
+      "schema_version": "0.3-experimental",
+      "sha256": "311d781189c73fc4875e3116c427e1b5d3667e308ab402636d7a132d31c42d05"
+    },
+    "metadata_sha256": "90ad69818c536c5ede9583dff36c95efb34420b6394995a84ff79d2fe211378d",
+    "mod_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
+    "off_status": "NOT_RUN_NO_PAIRED_ON_ARM",
+    "on_status": "ON_NOT_RUNNABLE",
+    "performance_result": null,
+    "pinned_commit": "3d084dfa2282ad0540d5509a3b9790c703333305",
+    "provenance_sha256": "d32c3f97f7d89183ff003c7294e52c301b6c6227c19edcac7853d105ef41ff79",
+    "repository": "intellistream/stateaxis-shared-prefix-attention"
+  },
+  "schema_version": "vllm-hust-benchmark/stateaxis-mod-on-off-preflight/v1"
+}
