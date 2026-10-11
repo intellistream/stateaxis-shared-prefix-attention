@@ -18,20 +18,22 @@
   "lifecycle": {
     "status": "experimental",
     "default_enabled": false,
-    "activation_contract": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed.",
-    "rollback_contract": "Disable or forget the descriptor and run the unchanged StateAxis host without this MOD."
+    "activation_contract": "Manifest 0.3 active, default-off, ECPA-only activation of hash-bound generation-safe shared-prefix cohort admission; version 0.2.0 is telemetry-only and never dispatches rejected kernels.",
+    "rollback_contract": "Omit this MOD from the Extension Manager plan; StateAxis retains ordinary paged attention with no cohort admission telemetry."
   },
   "scope": {
     "mechanism": "fork_cohort_shared_prefix_attention",
-    "supported_workloads": [],
+    "supported_workloads": [
+      "block-aligned sibling decode cohorts sharing one exact state generation"
+    ],
     "out_of_scope": [
       "general performance claims",
       "automatic inheritance from StateAxis aggregate evidence"
     ]
   },
   "evidence": {
-    "qualification": "not-beneficial-in-tested-cell",
-    "latest_result": "evidence/ISSUE13_SHARED_PREFIX_ATTENTION_CLOSURE.md",
+    "qualification": "historical-component-negative-active-experimental",
+    "latest_result": "evidence/ecpa-contract-20261011/RESULT.json",
     "index": "EVIDENCE.md",
     "performance_claims": [
       {

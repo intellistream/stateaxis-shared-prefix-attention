@@ -1,0 +1,84 @@
+{
+  "schema_version": "stateaxis-mod-on-off/v1",
+  "date_utc": "2026-10-11",
+  "mod_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
+  "mod_version": "0.2.0",
+  "research_manifest_sha256": "9b1833a0b1b62215b9181180edf6e222dc1d59359bf09cc9942c0217e111d6ab",
+  "evidence_label": "manager-contract-shared-prefix-attention-non-performance",
+  "performance_qualified": false,
+  "hardware_execution": false,
+  "host": {
+    "repository": "Qixin-Gaoke/stateaxis",
+    "merge_commit": "87f75e7addc6e3413094fbe68e2da8842ccb2f93",
+    "activation_mode": "telemetry_only",
+    "worker_dispatch_changed": false,
+    "state_lifetime_extended": false
+  },
+  "manager": {
+    "inspect": "passed",
+    "check": "passed_with_expected_experimental_degradation",
+    "plan": "passed",
+    "dry_run": "passed",
+    "managed_assembly_check_process": "passed",
+    "off_assembly_identity_sha256": "bb35026e9e8556be634b377ac093443938d65110655404a5dd3c4cf1dfd4b8b3",
+    "on_assembly_identity_sha256": "b0b52bfd183a5253a2ea89d0c1e4eda238c51989376d0c9605e64a39c2cb3221",
+    "direct_environment_activation_rejected": true
+  },
+  "frozen_artifact": {
+    "execution_config_sha256": "09682f76a33b63dd5312aa7a0f7b43f9b2e1144cbd22c14ba952b9a9907e0815",
+    "artifact_identity_sha256": "f82b25e00bd40891a870987087ca285dbc6a7d8c42d19d2790b6328b30cac38f",
+    "weights_digest": "4ca9cbc269c4605424d3170d614f43854388b19bee70ade62c28ce054ee9033a",
+    "policy": "fused_gate_up_aclnn_swiglu",
+    "prefix_extension_mode": "paged_append_prefill"
+  },
+  "validation": {
+    "python_tests": "3 passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed",
+    "package_build": "passed",
+    "rust_library_tests": "417 passed",
+    "cargo_check_lib_bins": "passed",
+    "cpp_exact_reference_test": "passed"
+  },
+  "on_effects": {
+    "mod_identity_present": true,
+    "eligible_group_key": [
+      "state_id",
+      "state_generation",
+      "context_len"
+    ],
+    "requires_decode": true,
+    "requires_128_token_block_alignment": true,
+    "deterministic_test_candidate_batches": 1,
+    "deterministic_test_eligible_groups": 1,
+    "deterministic_test_eligible_rows": 4,
+    "deterministic_test_shared_tokens": 128,
+    "deterministic_test_projected_avoided_row_tokens": 384,
+    "deterministic_test_fallback_batches": 0
+  },
+  "off_effects": {
+    "mod_identity_present": false,
+    "candidate_accounting_enabled": false,
+    "paged_attention_unchanged": true
+  },
+  "historical_real_npu_result": {
+    "v250_component_p50_reduction_percent": 31.185,
+    "v250_correctness": "failed",
+    "v250_max_abs_error": 0.01477,
+    "v250_prefix_lse_error": 0.19936,
+    "v262_matched_reduction_range_percent": [
+      9.828,
+      14.063
+    ],
+    "v262_preregistered_crossover_gate_percent": 20.0,
+    "v262_matched_correctness": "failed_or_nonfinite",
+    "classification": "component_negative",
+    "claim": "the rejected historical device kernels are not activated"
+  },
+  "limitations": [
+    "this revision measures admission opportunity only and does not dispatch a shared-prefix device kernel",
+    "projected avoided row-token reads are not HBM traffic or online performance measurements",
+    "no NPU was started for this evidence revision",
+    "fresh exact device implementation and matched real-online repetitions are required before any performance claim"
+  ]
+}
