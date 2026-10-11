@@ -1,0 +1,52 @@
+{
+  "schema_version": "stateaxis-research-mod/v1",
+  "mod_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
+  "version": "0.2.0",
+  "mechanism": {
+    "name": "generation-bound-shared-prefix-attention-admission",
+    "enabled": true,
+    "telemetry_only": true,
+    "max_group_size": 32,
+    "min_group_size": 2,
+    "block_tokens": 128,
+    "require_decode": true,
+    "require_same_state_generation": true,
+    "require_full_block_prefix": true,
+    "require_same_context_length": true,
+    "stable_member_order": true,
+    "fallback_to_paged_attention": true,
+    "extend_state_lifetime": false,
+    "fail_closed": true
+  },
+  "host_contract": {
+    "provider": "stateaxis",
+    "api_range": ">=1,<2",
+    "implementation": "statecentric_engine:parse_shared_prefix_attention_additional_config",
+    "effect_counters": [
+      "shared_prefix_candidate_batches",
+      "shared_prefix_eligible_groups",
+      "shared_prefix_eligible_rows",
+      "shared_prefix_shared_tokens",
+      "shared_prefix_projected_avoided_row_tokens",
+      "shared_prefix_fallback_batches"
+    ],
+    "lifecycle_state": []
+  },
+  "qualification": {
+    "performance_qualified": false,
+    "evidence_label": "historical-real-npu-component-negative",
+    "scope": "Qwen2.5-14B BF16 shared-prefix component probes; active revision is admission telemetry only",
+    "blockers": [
+      "V250 reduced component P50 by 31.185% but failed the unchanged correctness gate",
+      "V262 passed a dedicated correctness run but its matched timing run failed correctness and the 20% crossover gate",
+      "the active revision does not dispatch the rejected device kernels",
+      "projected avoided reads are telemetry and not measured HBM savings",
+      "fresh matched ECPA real-online repetitions are required before any serving claim"
+    ]
+  },
+  "source": {
+    "repository": "Qixin-Gaoke/stateaxis",
+    "commit": "7562b5fa6f42e2e045a877b53ac934739e2cf230",
+    "issues": [13]
+  }
+}

@@ -10,6 +10,14 @@
   "copied_evidence_sha256": "cd14a2e3229c8a06b08275c89aee2a4930cb77e2bdb8caeb69cec32a3009c775",
   "qualification_inherited": false,
   "implementation_extracted": false,
+  "activation_contract_extracted": true,
+  "active_revision": {
+    "version": "0.2.0",
+    "host_implementation": "statecentric_engine:parse_shared_prefix_attention_additional_config",
+    "research_manifest": "RESEARCH_MANIFEST.json",
+    "dispatch_mode": "telemetry_only",
+    "performance_qualified": false
+  },
   "licensing": {
     "scaffolding": "Apache-2.0",
     "copied_evidence": "No additional license grant is inferred from this split."

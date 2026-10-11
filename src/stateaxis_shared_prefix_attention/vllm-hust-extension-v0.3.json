@@ -1,8 +1,8 @@
 {
   "schema_version": "0.3-experimental",
   "extension_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
-  "extension_version": "0.1.0.dev0",
-  "kind": "in_process_plugin",
+  "extension_version": "0.2.0",
+  "kind": "runtime_bridge",
   "host": {
     "provider": "stateaxis",
     "name": "stateaxis",
@@ -23,15 +23,20 @@
   ],
   "implementation": [
     {
-      "type": "python_module",
-      "module": "stateaxis_shared_prefix_attention",
-      "object": "StateaxisSharedPrefixAttentionContractProposal",
-      "status": "import_only"
+      "type": "host_builtin",
+      "symbol": "statecentric_engine:parse_shared_prefix_attention_additional_config",
+      "status": "active"
     }
   ],
   "requires_services": [],
   "requires_extensions": [],
-  "resource_claims": [],
+  "resource_claims": [
+    {
+      "resource": "stateaxis.native.shared-prefix-cohort-admission",
+      "scope": "stateaxis-process",
+      "mode": "exclusive"
+    }
+  ],
   "components": [
     {
       "component_id": "stateaxis-shared-prefix-attention",
@@ -44,13 +49,40 @@
         "device"
       ],
       "isolation": "trusted_in_process",
-      "implementation_ref": "stateaxis_shared_prefix_attention:StateaxisSharedPrefixAttentionContractProposal",
+      "implementation_ref": "stateaxis_shared_prefix_attention:shared_prefix_attention",
       "permissions": []
     }
   ],
   "activation": {
-    "entry_points": [],
+    "entry_points": [
+      {
+        "group": "stateaxis.mod_handlers",
+        "name": "shared_prefix_attention"
+      }
+    ],
     "environment": {},
-    "additional_config": {}
+    "additional_config": {
+      "stateaxis_shared_prefix_attention": {
+        "enabled": true,
+        "telemetry_only": true,
+        "max_group_size": 32,
+        "min_group_size": 2,
+        "block_tokens": 128,
+        "require_decode": true,
+        "require_same_state_generation": true,
+        "require_full_block_prefix": true,
+        "require_same_context_length": true,
+        "stable_member_order": true,
+        "fallback_to_paged_attention": true,
+        "extend_state_lifetime": false,
+        "fail_closed": true
+      },
+      "stateaxis_mod": {
+        "mod_id": "org.vllm-hust.stateaxis-shared-prefix-attention",
+        "version": "0.2.0",
+        "manifest_sha256": "9b1833a0b1b62215b9181180edf6e222dc1d59359bf09cc9942c0217e111d6ab",
+        "performance_qualified": false
+      }
+    }
   }
 }
