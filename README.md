@@ -16,7 +16,10 @@ historical V250/V262 device kernels. V250 showed a 31.185% component P50
 reduction but failed correctness. V262 passed a separate correctness run, then
 failed correctness in matched timing and missed the 20% crossover gate at every
 endpoint. Candidate counts and projected avoided row-token reads are not HBM or
-online performance measurements.
+online performance measurements. The five frozen preregistration/result files
+are vendored under `evidence/historical-real-npu-component-gates/` with
+repo-local SHA-256 checks. A service ON/OFF run of version 0.2.0 would measure
+telemetry overhead rather than the rejected device acceleration.
 
 ## Install and validate
 

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "version": "V262",
+  "run": "npu-timing-r01",
+  "status": "rejected-correctness-and-performance",
+  "source_commit": "b4e91223541a5ad0fd4a32d0331342e42c406111",
+  "workload": {"batch": 32, "prefix_tokens": 2048, "suffix_tokens": [130, 145, 161], "warmups": 5, "alternating_samples_per_arm": 20},
+  "cases": [
+    {"suffix_tokens": 130, "control_p50_us": 338.4875, "candidate_p50_us": 290.887, "candidate_p50_reduction_pct": 14.062705417482185, "control_cv_pct": 70.99668323333891, "candidate_cv_pct": 3.5018153893827937, "max_abs_error": 0.018585205078125, "mean_abs_error": 0.004170410800725222, "correctness_passed": false},
+    {"suffix_tokens": 145, "control_p50_us": 337.078, "candidate_p50_us": 293.347, "candidate_p50_reduction_pct": 12.973555082206492, "control_cv_pct": 5.213510581256829, "candidate_cv_pct": 4.268250451266018, "max_abs_error": null, "mean_abs_error": null, "all_outputs_finite": false, "correctness_passed": false},
+    {"suffix_tokens": 161, "control_p50_us": 329.53200000000004, "candidate_p50_us": 297.14700000000005, "candidate_p50_reduction_pct": 9.827573649903496, "control_cv_pct": 3.4712683861880396, "candidate_cv_pct": 4.351316769757353, "max_abs_error": 0.0103912353515625, "mean_abs_error": 0.001973014324903488, "correctness_passed": true}
+  ],
+  "gates": {"correctness_gate_passed": false, "performance_gate_passed": false, "required_reduction_pct_at_every_endpoint": 20.0},
+  "memory": {"replicated_prefix_kv_total_bytes_per_layer": 16777216, "incremental_prefix_kv_bytes_per_layer": 8388608, "replicated_prefix_kv_total_bytes_48_layers": 805306368, "incremental_prefix_kv_bytes_48_layers": 402653184},
+  "decision": "reject V262 integration; preserve timings as diagnostic only because correctness fails and every endpoint misses the performance gate",
+  "engine_metrics": {"native_request_per_s": null, "native_output_token_per_s": null, "vllm_hust_rerun": false},
+  "lifecycle": {"probe_exit_status": 3, "npu4_clean_after": true},
+  "artifacts": {
+    "remote_dir": "/home/shuhao/statecentric-ascend-engine/.benchmarks/v262-suffix-valid-npu-timing-r01",
+    "result_sha256": "afe0a58d801eb2df00fc884edf82ffc5deb4717481a424dd2de262fb5cc70075",
+    "stdout_sha256": "ff4c25c8cc57ea16017425cbeed8c471207c015abbf4756120ca05a9a3e3ac7c",
+    "stderr_sha256": "60bfc930abeb875a49ac48624c7bb868428a72483e347adc61a6e87d939ea509",
+    "npu_before_sha256": "229bbffb5e07b337717568218c95561d667e342a30156dc7323bb3ba88bce2db",
+    "npu_after_sha256": "4966a0429b050d73f49e7631e4bd3a81f30a1601565838994dfb808c7b95980f"
+  }
+}

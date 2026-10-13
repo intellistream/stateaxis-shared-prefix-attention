@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "version": "V262",
+  "run": "npu-timing-r01",
+  "physical_npu": 4,
+  "workloads": [{"batch": 32, "prefix_tokens": 2048, "suffix_tokens": 130}, {"batch": 32, "prefix_tokens": 2048, "suffix_tokens": 145}, {"batch": 32, "prefix_tokens": 2048, "suffix_tokens": 161}],
+  "control": "production BNSD paged IncreFA inner_precise=1",
+  "candidate": "length-bound PTO layout plus V250 prefix TFA plus V262 exact suffix TFA plus V250 direct-BF16 merge",
+  "timing": {"warmups": 5, "alternating_samples_per_arm": 20, "synchronize_each_sample": true},
+  "correctness_dependency": "benchmarks/qwen14b_suffix_valid_v262_npu_correctness_r01_accepted.json",
+  "correctness_gate": "fresh full-chain output max error <=0.03125 and mean error <=0.002 at every endpoint",
+  "performance_gate": "candidate P50 at least 20 percent below control at all three endpoints",
+  "memory_boundary": "report device bytes for two-way replicated P2048 prefix K/V and distinguish total from incremental over one copy",
+  "claim_boundary": "component-only; engine req/s and output tok/s N/A; vLLM-HUST is not rerun"
+}

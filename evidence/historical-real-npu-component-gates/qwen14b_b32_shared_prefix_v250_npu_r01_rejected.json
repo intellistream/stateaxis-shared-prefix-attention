@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "version": "V250",
+  "run": "npu-r01",
+  "source_commit": "a9f6c23aeb76a135cdfa0922fdb3482e6328408d",
+  "physical_npu": 4,
+  "workload": {"batch": 32, "shared_prefix_tokens": 8192, "unique_suffix_tokens": 128, "alternating_samples_per_arm": 20},
+  "outcome": {
+    "correctness_gate_passed": false,
+    "performance_gate_passed": true,
+    "component_gate_passed": false,
+    "control_p50_us": 650.724,
+    "candidate_p50_us": 447.798,
+    "candidate_p50_reduction_pct": 31.184649713242486,
+    "candidate_cv_pct": 2.8204486707244207,
+    "final_max_abs_error": 0.0147705078125,
+    "final_mean_abs_error": 0.0010908216936513782,
+    "prefix_max_abs_lse_error": 0.1993560791015625,
+    "prefix_mean_abs_lse_error": 0.033429428935050964,
+    "native_request_throughput_rps": null,
+    "native_output_throughput_tps": null
+  },
+  "decision": "reject: performance is breakthrough-shaped but prefix LSE exceeds the unchanged correctness gate",
+  "root_cause_hypothesis": "S0=2048 creates two 128-row query blocks per KV head while the TFA key/value address contract advances one KV segment per block; the eight-head prefix K/V input is not duplicated for the second block",
+  "next": "V251 duplicates each prefix K/V head segment for its two query blocks and reruns unchanged gates",
+  "cleanup": {"npu4_clean": true, "npu4_processes_after": 0},
+  "evidence_sha256": {
+    "result_json": "5918d435153c39d130a6e38bf307305789f285e64ea39d48cbdcfed42ccad342",
+    "stdout_log": "fa710c5dcfb23725f5d731b3b74c4fc0194c695cd1302556ca4fa8d769000d12",
+    "stderr_log": "60bfc930abeb875a49ac48624c7bb868428a72483e347adc61a6e87d939ea509",
+    "input_manifest": "ef39a7acef2e6171dd1a4e8c00c867015b61e1370e194efe4f5d05d3d9843324",
+    "npu_before": "aa710f21f2b1e6f3c408bfaa642af4afe0db97b19f6bc49fc0524871c406a10b",
+    "npu_after": "422e01a33dafd0f069ed7c454fc574034f230dafd04672b743c433ddf9a1ac69",
+    "complete_marker": "9632177ce940e448ffaffe60398a43362862d93e0e4c37ffd0d4e535ee53ebd5"
+  }
+}
