@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "version": "V262",
+  "run": "npu-correctness-r01",
+  "status": "accepted-correctness-positive-timing-paused-for-baseline-closure",
+  "source_commit": "42f596a6855747929cf9375098b1bd022ee45bbf",
+  "physical_npu": 4,
+  "workload": {"batch": 32, "padded_suffix_tokens": 256, "suffix_tokens": [130, 145, 161]},
+  "cases": [
+    {"suffix_tokens": 130, "max_abs_output_error": 0.00048526935279369354, "mean_abs_output_error": 0.00009753952326718718, "max_abs_lse_error": 0.00000095367431640625, "padding_invariance_max_abs_error": 0.0},
+    {"suffix_tokens": 145, "max_abs_output_error": 0.00044773146510124207, "mean_abs_output_error": 0.00009197178587783128, "max_abs_lse_error": 0.00000095367431640625, "padding_invariance_max_abs_error": 0.0},
+    {"suffix_tokens": 161, "max_abs_output_error": 0.00043966295197606087, "mean_abs_output_error": 0.00008646606875117868, "max_abs_lse_error": 0.00000095367431640625, "padding_invariance_max_abs_error": 0.0}
+  ],
+  "correctness_gate_passed": true,
+  "timing_performed": false,
+  "decision": "retain as a successful correctness mechanism but pause component timing until Native-vLLM-HUST benchmark baseline gaps are closed",
+  "cleanup": {"npu4_clean": true, "npu4_processes_after": 0},
+  "evidence_sha256": {"result_json": "f98faa0628be60750acb0129d658f78aaad867599bf4c463d42163f63183b2ab", "stdout_log": "39c6de1a56823202e88be5c25f26c83b5f47e7cdb5178b4e82d016488e54da62", "stderr_log": "60bfc930abeb875a49ac48624c7bb868428a72483e347adc61a6e87d939ea509", "input_manifest": "5f29308426329ab53f8182a26d6fe1036d025e501307c02f56a819980195147c", "npu_before": "0e640baf65f77084e79e42ff3c0db48bbf0fda012e85423f606c218acefaa3bd", "npu_after": "a6d67901df5f95205de5c61f2c68fb4f3db510638dbb64792e5a1c785bc3910c", "complete_marker": "54838c3ec828bce6fa3f316ccbeb0651fc085d020b88a881ffe489feae997d99"},
+  "native_request_throughput_rps": null,
+  "native_output_throughput_tps": null,
+  "vllm_hust_baseline": null
+}

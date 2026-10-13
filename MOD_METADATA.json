@@ -33,13 +33,13 @@
   },
   "evidence": {
     "qualification": "historical-component-negative-active-experimental",
-    "latest_result": "evidence/ecpa-contract-20261011/RESULT.json",
+    "latest_result": "evidence/historical-real-npu-component-gates/qwen14b_suffix_valid_v262_npu_timing_r01_rejected.json",
     "index": "EVIDENCE.md",
     "performance_claims": [
       {
         "label": "not-beneficial-in-tested-cell",
-        "scope": "frozen StateAxis source evidence only",
-        "result": "No tested candidate passed correctness and crossover together."
+        "scope": "frozen Qwen2.5-14B real-NPU component evidence",
+        "result": "V250 improved component P50 by 31.185% but failed correctness; V262 improved P50 by 9.828%-14.063% but its matched timing run failed correctness and every endpoint missed the preregistered 20% crossover gate."
       }
     ]
   }

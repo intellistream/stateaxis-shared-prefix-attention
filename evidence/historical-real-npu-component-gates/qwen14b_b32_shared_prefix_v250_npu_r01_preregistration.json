@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "version": "V250",
+  "run": "npu-r01",
+  "physical_npu": 4,
+  "attention_sha256": "ffb53018d389d1a1b898bba49a7a75b58f4ae8998165dc023e6bdbdee3790fb6",
+  "layout_sha256": "40d43c8ac3013e55c2d7791d2a34f3b28769999ddd925045c86415c6a778f363",
+  "merge_sha256": "bc2e25f1ecd01befb271c8c3073e18497d2cc5c960e9bf49dc1b51495deb3bc1",
+  "workload": {"batch": 32, "shared_prefix_tokens": 8192, "unique_suffix_tokens": 128, "warmups": 3, "alternating_samples_per_arm": 20},
+  "geometry": {"prefix_padded_rows": 256, "suffix_padded_rows": 128},
+  "correctness_gate": "finite outputs/statistics plus independent final, prefix, suffix and stable-merge oracles; V228 copy-only diagnostics omitted because they do not support B32/dual stride",
+  "performance_gate": "candidate P50 at least 20 percent below full paged FIAS",
+  "claim_boundary": "component B32 only; engine req/s and output tok/s N/A",
+  "vllm_hust_baseline_rerun": false
+}
